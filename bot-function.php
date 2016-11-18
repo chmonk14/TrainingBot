@@ -14,9 +14,9 @@ function isLightOn (){
     return $replyStr;
 }
 
-function isEquation (){
+function isEquation ($receivedStr){
 
-    $mixed = "100 + 10?";
+    $mixed = $receivedStr;//"100 + 10?";
     $letters=array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V','W', 'X', 'Y', 'Z','?','=');
     $only_numbers=str_replace($letters, '', $mixed);
 

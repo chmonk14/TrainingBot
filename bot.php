@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => $text.', from editing branch'
+                'text' => $text.', from editing branch. Ver. 0.5'
             ];
 
 
@@ -56,7 +56,7 @@ if (!is_null($events['events'])) {
 //            if(isEquation()){
                 $messages2 = [
                     'type' => 'text',
-                    'text' => "Result from isEquation: ".isEquation()
+                    'text' => "Result from isEquation: ".isEquation($text)
                 ];
 
                 array_push($data['messages'], $messages2);
