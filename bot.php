@@ -42,7 +42,7 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => 'from editing branch. Ver. 0.0.10: $text'
+                'text' => 'from editing branch. Ver. 0.0.11: '.$text
             ];
 
             // Make a POST Request to Messaging API to reply to sender
@@ -63,6 +63,18 @@ if (!is_null($events['events'])) {
             if($isEquation[0]){
                 reply("Ans: ".$isEquation[1]);
 
+            }
+
+            //reply to sth "sticker"
+            if(strpos($text, 'sticker') !== false){
+                $tempMessage = [
+                       "type" => "sticker",
+                        "packageId" => "1",
+                        "stickerId" => "1"
+
+                ];
+
+                array_push($data['messages'], $tempMessage);
             }
 
             $post = json_encode($data);
