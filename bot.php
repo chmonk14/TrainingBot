@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => $text.'\\n from editing branch. Ver. 0.0.6'
+                'text' => $text.'<br/> from editing branch. Ver. 0.0.7'
             ];
 
 
@@ -53,14 +53,15 @@ if (!is_null($events['events'])) {
             }
 
             //reply to sth equation
-//            if(isEquation()){
+            $isEquation = isEquation($text);
+            if($isEquation[0]){
                 $messages2 = [
                     'type' => 'text',
-                    'text' => "Result from isEquation: ".isEquation($text)
+                    'text' => "Result from isEquation: ".$isEquation[1]
                 ];
 
                 array_push($data['messages'], $messages2);
-//            }
+            }
 
             $post = json_encode($data);
             $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
