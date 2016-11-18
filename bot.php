@@ -30,7 +30,7 @@ if (!is_null($events['events'])) {
                 'text' => $text
             ];
 
-            if(strpos($text, 'light') !== false){
+            if(strpos($text, 'light') != false){
                 $messages1 = [
                     'type' => 'text',
                     'text' => 'Light is on'
