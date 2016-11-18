@@ -81,8 +81,8 @@ if (!is_null($events['events'])) {
             if(stripos($text, 'photo') !== false){
                 $tempMessage = [
                     "type" => "image",
-                    "originalContentUrl" => "https://example.com/original.jpg",
-                    "previewImageUrl" => "https://example.com/preview.jpg"
+                    "originalContentUrl" => "https://40.media.tumblr.com/da455c51e4468e705a61f1800763c0e8/tumblr_niyf6pOg441sqk7hko1_1280.jpg",
+                    "previewImageUrl" => "https://40.media.tumblr.com/da455c51e4468e705a61f1800763c0e8/tumblr_niyf6pOg441sqk7hko1_1280.jpg"
 
                 ];
 
