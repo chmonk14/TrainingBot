@@ -22,8 +22,9 @@ function isEquation ($receivedStr){
 
     echo "$only_numbers <br>";
 
-    if(ctype_space($only_numbers))return "False".$only_numbers;
-    else return "True".$only_numbers;
+    if(ctype_space($only_numbers) || empty($only_numbers))return "False".$only_numbers;
+    else return "True".eval('return '.$only_numbers.';');
+
 //    $only_numbers = eval('return '.$only_numbers.';');
 //
 //    echo "$only_numbers <br>";
