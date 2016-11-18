@@ -1,6 +1,8 @@
 <?php
 echo "I am a bot";
 
+include 'bot-function.php';
+
 $access_token = 'ts/ODdUyyx8b4V22zeXlZJFcwI5ujx+QH4lL+WOUH1zE/FFQWjsX/hz9ct7Z421y5qRuUYCUxM17fgFHO0coy/EKPuUPLJyqTaVtE0Xd/uR6YRlLFbvGBhNS9NE3Q2LkcKZTPstqbwkuL7hTjF5GGAdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -27,7 +29,7 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => $text
+                'text' => $text.$function
             ];
 
 
@@ -49,6 +51,8 @@ if (!is_null($events['events'])) {
 
                 array_push($data['messages'], $messages1);
             }
+
+            //reply to sth equation
 
             $post = json_encode($data);
             $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
