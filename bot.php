@@ -35,20 +35,11 @@ if (!is_null($events['events'])) {
             // Make a POST Request to Messaging API to reply to sender
             $url = 'https://api.line.me/v2/bot/message/reply';
 
-            $messages2 = [
-                'type' => 'text',
-                'text' => 'test text'
-            ];
-
             //reply
             $data = [
                 'replyToken' => $replyToken,
-                'messages' => [$messages, $messages2],
+                'messages' => [$messages],
             ];
-
-           
-            array_push($data['messages'], $messages2);
-
             //reply to sth "light"
             if(strpos($text, 'light') !== false){
                 $messages1 = [
