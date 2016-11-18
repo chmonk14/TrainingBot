@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => $text.$function
+                'text' => $text
             ];
 
 
@@ -53,6 +53,14 @@ if (!is_null($events['events'])) {
             }
 
             //reply to sth equation
+            if(isEquation()){
+                $messages2 = [
+                    'type' => 'text',
+                    'text' => "it's a equation",
+                ];
+
+                array_push($data['messages'], $messages2);
+            }
 
             $post = json_encode($data);
             $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
