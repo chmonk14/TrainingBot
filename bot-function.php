@@ -6,6 +6,7 @@
  * Time: 11:20 PM
  */
 
+$function = 'Function from another file';
 
 function isLightOn (){
 
