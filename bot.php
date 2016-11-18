@@ -9,6 +9,10 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 
+//PROXY
+$proxy = 'velodrome.usefixie.com:80';
+$proxyauth = 'fixie:1sESv3OLyAM3Han';
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
     // Loop through each event
@@ -41,6 +45,9 @@ if (!is_null($events['events'])) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt($ch, CURLOPT_PROXY, $proxy);
+            curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
+
             $result = curl_exec($ch);
             curl_close($ch);
 
