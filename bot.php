@@ -3,6 +3,19 @@ echo "I am a bot";
 
 include 'bot-function.php';
 
+$data; //reply data
+
+function reply ($replyMessage){
+    global $data;
+
+    $messages2 = [
+        'type' => 'text',
+        'text' => $replyMessage
+    ];
+
+    array_push($data['messages'], $messages2);
+}
+
 $access_token = 'ts/ODdUyyx8b4V22zeXlZJFcwI5ujx+QH4lL+WOUH1zE/FFQWjsX/hz9ct7Z421y5qRuUYCUxM17fgFHO0coy/EKPuUPLJyqTaVtE0Xd/uR6YRlLFbvGBhNS9NE3Q2LkcKZTPstqbwkuL7hTjF5GGAdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -29,10 +42,8 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => $text.'<br/> from editing branch. Ver. 0.0.7'
+                'text' => $text.'&#10 from editing branch. Ver. 0.0.8'
             ];
-
-
 
             // Make a POST Request to Messaging API to reply to sender
             $url = 'https://api.line.me/v2/bot/message/reply';
@@ -55,12 +66,9 @@ if (!is_null($events['events'])) {
             //reply to sth equation
             $isEquation = isEquation($text);
             if($isEquation[0]){
-                $messages2 = [
-                    'type' => 'text',
-                    'text' => "Result from isEquation: ".$isEquation[1]
-                ];
 
-                array_push($data['messages'], $messages2);
+                reply("Ans: ".$isEquation[1]);
+
             }
 
             $post = json_encode($data);

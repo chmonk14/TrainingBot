@@ -25,5 +25,5 @@ function isEquation ($receivedStr){
     if(ctype_space($only_numbers) || empty($only_numbers))return false;
     else return [true, eval('return '.$only_numbers.';')];
 
-
 }
+
