@@ -30,19 +30,26 @@ if (!is_null($events['events'])) {
                 'text' => $text
             ];
 
-            if(strpos($text, 'light') !== false){
-                $messages1 = [
-                    'type' => 'text',
-                    'text' => 'Light is on'
-                ];
-            }
+
 
             // Make a POST Request to Messaging API to reply to sender
             $url = 'https://api.line.me/v2/bot/message/reply';
             $data = [
                 'replyToken' => $replyToken,
-                'messages' => [$messages, $messages1],
+                'messages' => [$messages],
             ];
+
+            //reply to sth "light"
+            if(strpos($text, 'light') !== false){
+                $messages1 = [
+                    'type' => 'text',
+                    'text' => 'Light is on'
+                ];
+
+
+                array_push($data['massages'], $messages1);
+            }
+
             $post = json_encode($data);
             $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
