@@ -42,7 +42,7 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => 'from editing branch. Ver. 0.0.11: '.$text
+                'text' => 'from editing branch. Ver. 0.0.12: '.$text
             ];
 
             // Make a POST Request to Messaging API to reply to sender
@@ -54,7 +54,7 @@ if (!is_null($events['events'])) {
                 'messages' => [$messages],
             ];
             //reply to sth "light"
-            if(strpos($text, 'light') !== false){
+            if(stripos($text, 'light') !== false){
                 reply(isLightOn());
             }
 
@@ -66,7 +66,7 @@ if (!is_null($events['events'])) {
             }
 
             //reply to sth "sticker"
-            if(strpos($text, 'sticker') !== false){
+            if(stripos($text, 'sticker') !== false){
                 $tempMessage = [
                        "type" => "sticker",
                         "packageId" => "1",
@@ -76,6 +76,20 @@ if (!is_null($events['events'])) {
 
                 array_push($data['messages'], $tempMessage);
             }
+
+            //reply to sth "photo"
+            if(stripos($text, 'photo') !== false){
+                $tempMessage = [
+                    "type" => "image",
+                    "originalContentUrl" => "https://example.com/original.jpg",
+                    "previewImageUrl" => "https://example.com/preview.jpg"
+
+                ];
+
+                array_push($data['messages'], $tempMessage);
+            }
+
+
 
             $post = json_encode($data);
             $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
