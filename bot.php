@@ -42,7 +42,8 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => $text.'&#10 from editing branch. Ver. 0.0.8'
+                'text' => $text.'
+                from editing branch. Ver. 0.0.9'
             ];
 
             // Make a POST Request to Messaging API to reply to sender
@@ -55,18 +56,12 @@ if (!is_null($events['events'])) {
             ];
             //reply to sth "light"
             if(strpos($text, 'light') !== false){
-                $messages1 = [
-                    'type' => 'text',
-                    'text' => isLightOn()
-                ];
-
-                array_push($data['messages'], $messages1);
+                reply(isLightOn());
             }
 
             //reply to sth equation
             $isEquation = isEquation($text);
             if($isEquation[0]){
-
                 reply("Ans: ".$isEquation[1]);
 
             }
