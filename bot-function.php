@@ -6,4 +6,10 @@
  * Time: 11:20 PM
  */
 
-$function = 'Function from another file';
+
+function isLightOn (){
+
+    $replyStr = "Yes, Light is on";
+
+    return $replyStr;
+}

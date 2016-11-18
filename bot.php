@@ -46,7 +46,7 @@ if (!is_null($events['events'])) {
             if(strpos($text, 'light') !== false){
                 $messages1 = [
                     'type' => 'text',
-                    'text' => 'Light is on'
+                    'text' => isLightOn()
                 ];
 
                 array_push($data['messages'], $messages1);
