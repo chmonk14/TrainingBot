@@ -1,7 +1,7 @@
 <?php
 echo "I am a bot";
 
-$access_token = 'wO7nUoOyE8BELlgafQ6Ti3nPr0KnQjORDhdkZCWbhV2WHNzmwTzuSfIO/tMguldNz/eY0VZr2QCM6zuN2+UF3E3RRuKqhzpwwjwPORyStgZEC8cTDsSvjydPWTm/KcX0biyiVxnX3Noonla2vOnY7AdB04t89/1O/w1cDnyilFU=';
+$access_token = 'ts/ODdUyyx8b4V22zeXlZJFcwI5ujx+QH4lL+WOUH1zE/FFQWjsX/hz9ct7Z421y5qRuUYCUxM17fgFHO0coy/EKPuUPLJyqTaVtE0Xd/uR6YRlLFbvGBhNS9NE3Q2LkcKZTPstqbwkuL7hTjF5GGAdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
 $content = file_get_contents('php://input');
