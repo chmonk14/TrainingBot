@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => $text.', from editing branch. Ver. 0.5'
+                'text' => $text.'\n from editing branch. Ver. 0.0.5'
             ];
 
 
