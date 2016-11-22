@@ -9,7 +9,7 @@
 
 function isLightOn (){
 
-    $url = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+    $url = "mysql://nizsshzp1ukftvyw:vn7ew1j2gc9od9ry@sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ngv6y5a1x2oslw5x";
     $dbparts = parse_url($url);
 
     $hostname = $dbparts['host'];
