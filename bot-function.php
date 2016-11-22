@@ -30,9 +30,11 @@ function isLightOn (){
 
     $result = mysqli_query($conn,$checkQ);
     $replyStr = " ".$result;
+    $row_count = mysqli_num_rows($result);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-    if(mysqli_num_rows($result) == 1){
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+    if($row_count == 1){
 
         if($row['state']){
             $replyStr = "Light is on";
