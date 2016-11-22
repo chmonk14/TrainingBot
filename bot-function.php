@@ -31,7 +31,7 @@ function isLightOn (){
     $result = mysqli_query($conn,$checkQ);
     $row_count = mysqli_num_rows($result);
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    
+
     $replyStr = "Error fetching data from database";
 
 
