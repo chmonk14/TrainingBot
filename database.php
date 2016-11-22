@@ -6,7 +6,7 @@
  * Time: 12:33 PM
  */
 
-$url = getenv('JAWSDB_URL');
+$url = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
 $dbparts = parse_url($url);
 
 $hostname = $dbparts['host'];
