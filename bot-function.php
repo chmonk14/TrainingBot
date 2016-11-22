@@ -29,9 +29,10 @@ function isLightOn (){
     $checkQ = "SELECT state FROM Accessory WHERE accID=1";
 
     $result = mysqli_query($conn,$checkQ);
-    $replyStr = " ".$result;
     $row_count = mysqli_num_rows($result);
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    
+    $replyStr = "Error fetching data from database";
 
 
     if($row_count == 1){
