@@ -46,7 +46,7 @@ function isLightOn (){
     }
 
 
-
+    echo $replyStr;
     return $replyStr;
 }
 
@@ -63,3 +63,4 @@ function isEquation ($receivedStr){
 
 }
 
+isLightOn();
