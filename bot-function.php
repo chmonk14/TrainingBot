@@ -9,7 +9,41 @@
 
 function isLightOn (){
 
-    $replyStr = "Yes, Light is on";
+    $url = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+    $dbparts = parse_url($url);
+
+    $hostname = $dbparts['host'];
+    $username = $dbparts['user'];
+    $password = $dbparts['pass'];
+    $database = ltrim($dbparts['path'],'/');
+
+// Create connection
+    $conn = new mysqli($hostname, $username, $password, $database);
+
+// Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    echo "Connection was successfully established!";
+
+    $checkQ = "SELECT state FROM Accessory WHERE accID=1";
+
+    $result = mysqli_query($conn,$checkQ);
+    if(mysqli_num_rows($result) == 1){
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+        if($row['state']){
+            $replyStr = "Light is on";
+        }else{
+            $replyStr = "Light is off";
+        }
+
+    }else{
+        $replyStr = "Can't found in database";
+
+    }
+
+
 
     return $replyStr;
 }
