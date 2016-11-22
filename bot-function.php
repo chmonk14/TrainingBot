@@ -65,5 +65,3 @@ function isEquation ($receivedStr){
     else return [true, eval('return '.$only_numbers.';')];
 
 }
-
-echo isLightOn();
