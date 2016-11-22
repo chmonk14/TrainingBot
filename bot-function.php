@@ -29,7 +29,7 @@ function isLightOn (){
     $checkQ = "SELECT state FROM Accessory WHERE accID=1";
 
     $result = mysqli_query($conn,$checkQ);
-    $replyStr = $result;
+    $replyStr = " ".$result;
 
     if(mysqli_num_rows($result) == 1){
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -63,4 +63,4 @@ function isEquation ($receivedStr){
 
 }
 
-isLightOn();
+echo isLightOn();
