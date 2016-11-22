@@ -12,7 +12,7 @@ $dbparts = parse_url($url);
 $hostname = $dbparts['host'];
 $username = $dbparts['user'];
 $password = $dbparts['pass'];
-$database = ltrim($dbparts['path'],'/');
+$database = 'Accessory';
 
 // Create connection
 $conn = new mysqli($hostname, $username, $password, $database);
