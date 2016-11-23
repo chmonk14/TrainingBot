@@ -102,4 +102,3 @@ function isEquation ($receivedStr){
 
 }
 
-turnLightON(true);
