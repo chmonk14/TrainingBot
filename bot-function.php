@@ -53,6 +53,42 @@ function isLightOn (){
     return $replyStr;
 }
 
+function turnLightON($YES){
+    $url = "mysql://nizsshzp1ukftvyw:vn7ew1j2gc9od9ry@sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ngv6y5a1x2oslw5x";
+    $dbparts = parse_url($url);
+
+    $hostname = $dbparts['host'];
+    $username = $dbparts['user'];
+    $password = $dbparts['pass'];
+    $database = ltrim($dbparts['path'],'/');
+
+// Create connection
+    $conn = new mysqli($hostname, $username, $password, $database);
+
+// Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    echo "Connection was successfully established!";
+
+    if($YES) $light = 1;
+    else $light = 0;
+
+    $turnQ = "UPDATE Accessory SET state=$light WHERE accID=1";
+
+    if(mysqli_query($conn,$turnQ) === true){
+
+        if($YES) $replyStr = "Turned light On";
+        else $replyStr = "Turned light Off";
+
+    }else{
+        $replyStr = "Can't connect to database";
+    }
+
+    echo $replyStr;
+    return $replyStr;
+}
+
 function isEquation ($receivedStr){
 
     $mixed = $receivedStr;//"100 + 10?";
@@ -65,3 +101,5 @@ function isEquation ($receivedStr){
     else return [true, eval('return '.$only_numbers.';')];
 
 }
+
+turnLightON(true);
