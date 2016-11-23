@@ -42,7 +42,7 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => 'from editing branch. Ver. 0.0.16: '.$text
+                'text' => 'from editing branch. Ver. 0.0.17: '.$text
             ];
 
             // Make a POST Request to Messaging API to reply to sender
@@ -61,7 +61,7 @@ if (!is_null($events['events'])) {
             //reply to sth "turn"
             if(stripos($text, 'turn') !== false){
                 if (stripos($text, 'on') !== false) reply(turnLightON(true));
-                else reply(turnLightON(false));
+                else if (stripos($text, 'off') !== false) reply(turnLightON(false));
             }
 
             //reply to sth equation
