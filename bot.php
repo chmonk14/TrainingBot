@@ -3,6 +3,19 @@ echo "I am a bot";
 
 include 'bot-function.php';
 
+$data; //reply data
+
+function reply ($replyMessage){
+    global $data;
+
+    $messages2 = [
+        'type' => 'text',
+        'text' => $replyMessage
+    ];
+
+    array_push($data['messages'], $messages2);
+}
+
 $access_token = 'ts/ODdUyyx8b4V22zeXlZJFcwI5ujx+QH4lL+WOUH1zE/FFQWjsX/hz9ct7Z421y5qRuUYCUxM17fgFHO0coy/EKPuUPLJyqTaVtE0Xd/uR6YRlLFbvGBhNS9NE3Q2LkcKZTPstqbwkuL7hTjF5GGAdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -29,10 +42,8 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => $text
+                'text' => 'from editing branch. Ver. 0.0.17: '.$text
             ];
-
-
 
             // Make a POST Request to Messaging API to reply to sender
             $url = 'https://api.line.me/v2/bot/message/reply';
@@ -43,24 +54,48 @@ if (!is_null($events['events'])) {
                 'messages' => [$messages],
             ];
             //reply to sth "light"
-            if(strpos($text, 'light') !== false){
-                $messages1 = [
-                    'type' => 'text',
-                    'text' => isLightOn()
-                ];
+            if(stripos($text, 'light') !== false){
+                reply(isLightOn());
+            }
 
-                array_push($data['messages'], $messages1);
+            //reply to sth "turn"
+            if(stripos($text, 'turn') !== false){
+                if (stripos($text, 'on') !== false) reply(turnLightON(true));
+                else if (stripos($text, 'off') !== false) reply(turnLightON(false));
             }
 
             //reply to sth equation
-            if(isEquation()){
-                $messages2 = [
-                    'type' => 'text',
-                    'text' => "it's a equation",
+            $isEquation = isEquation($text);
+            if($isEquation[0]){
+                reply("Ans: ".$isEquation[1]);
+
+            }
+
+            //reply to sth "sticker"
+            if(stripos($text, 'sticker') !== false){
+                $tempMessage = [
+                       "type" => "sticker",
+                        "packageId" => "1",
+                        "stickerId" => "1"
+
                 ];
 
-                array_push($data['messages'], $messages2);
+                array_push($data['messages'], $tempMessage);
             }
+
+            //reply to sth "photo"
+            if(stripos($text, 'photo') !== false){
+                $tempMessage = [
+                    "type" => "image",
+                    "originalContentUrl" => "https://40.media.tumblr.com/da455c51e4468e705a61f1800763c0e8/tumblr_niyf6pOg441sqk7hko1_1280.jpg",
+                    "previewImageUrl" => "https://40.media.tumblr.com/da455c51e4468e705a61f1800763c0e8/tumblr_niyf6pOg441sqk7hko1_1280.jpg"
+
+                ];
+
+                array_push($data['messages'], $tempMessage);
+            }
+
+
 
             $post = json_encode($data);
             $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
